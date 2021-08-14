@@ -1,2 +1,1 @@
-#test
-problems from JCF-review (int202) 
+All problems from __*JCF-review slide*__ (INT202)
