@@ -18,7 +18,7 @@ public class Main {
             } else {
                 map.put(numbers[i], 1);
             }
-            if (findAllIndex(numbers, value).size() == maxFrequent && i == (numbers.length - 1)) {
+            if (i == (numbers.length - 1)) {
                 System.out.println(value + "(" + maxFrequent + "): " + findAllIndex(numbers, value));
             }
         }
