@@ -1,7 +1,6 @@
 package sit.int202.problem3;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
@@ -11,14 +10,16 @@ public class Main {
         System.out.print("input: ");
         int number = input.nextInt();
 
+        List<Integer> intList = new ArrayList<>(list.length);
+        for (int i : list) intList.add(i);
+
         Map<Integer, Integer> pair = new HashMap<>();
         for (int i = 0; i < list.length; i++) {
             int result = number - list[i];
-            if (result > list[i]) {
-                List<Integer> k = Arrays.stream(list).boxed().collect(Collectors.toList());
-                pair.put(k.indexOf(result), i);
+            if (result > list[i] && intList.contains(result)) {
+                pair.put(intList.indexOf(result), i);
             }
         }
-        pair.forEach((x, y) -> System.out.print("(" + x + ", " + y + ")"));
+        pair.forEach((x, y) -> System.out.printf("(%d, %d)", x, y));
     }
 }
