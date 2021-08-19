@@ -8,29 +8,27 @@ public class Main {
         Map<Integer, Integer> map = new TreeMap<>();
         int maxFrequent = 0;
         int value = 0;
-        for (int i = 0; i < numbers.length; i++) {
-            if (map.containsKey(numbers[i])) {
-                map.replace(numbers[i], map.get(numbers[i]) + 1);
-                if (map.get(numbers[i]) > maxFrequent) {
-                    value = numbers[i];
+        for (int number : numbers) {
+            if (map.containsKey(number)) {
+                map.replace(number, map.get(number) + 1);
+                if (map.get(number) > maxFrequent) {
+                    value = number;
                     maxFrequent = map.get(value);
                 }
             } else {
-                map.put(numbers[i], 1);
-            }
-            if (i == (numbers.length - 1)) {
-                System.out.println(value + "(" + maxFrequent + "): " + findAllIndex(numbers, value));
+                map.put(number, 1);
             }
         }
+        System.out.println(value + "(" + maxFrequent + "): " + findAllIndex(numbers, value));
     }
 
-    private static List<Integer> findAllIndex(int[] arr, Integer value) {
+    private static String findAllIndex(int[] arr, Integer value) {
         List<Integer> list = new ArrayList<>();
         for (int i = 0; i < arr.length; i++) {
             if (value == arr[i]) {
                 list.add(i);
             }
         }
-        return list;
+        return list.toString();
     }
 }
