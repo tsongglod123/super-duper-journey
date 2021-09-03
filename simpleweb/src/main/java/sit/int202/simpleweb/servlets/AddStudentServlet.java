@@ -12,22 +12,25 @@ import java.io.IOException;
 public class AddStudentServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/studentform.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/student_form.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         String id = request.getParameter("id");
         String name = request.getParameter("name");
         String gpax = request.getParameter("gpax");
         if (id == null || id.length() == 0 || name == null || name.trim().length() == 0 || gpax == null || gpax.length() == 0) {
-            request.setAttribute("msg", "invalid input");
-            getServletContext().getRequestDispatcher("/studentform.jsp").forward(request, response);
+            request.setAttribute("error_msg", "invalid: input all fields are required!");
+            getServletContext().getRequestDispatcher("/student_form.jsp").forward(request, response);
             return;
         }
         Student student = new Student(Integer.valueOf(id), name, Double.valueOf(gpax));
         StudentRepository repository = new StudentRepository();
         repository.save(student);
-        getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+        request.setAttribute("student", student);
+        getServletContext().getRequestDispatcher("/show_student_info.jsp").forward(request, response);
+        // getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
     }
 }

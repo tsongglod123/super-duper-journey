@@ -12,7 +12,7 @@ public class StudentListServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         StudentRepository studentRepository = new StudentRepository();
         request.setAttribute("students", studentRepository.all());
-        getServletContext().getRequestDispatcher("/studentlist.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/student_list.jsp").forward(request, response);
         return;
     }
 }
