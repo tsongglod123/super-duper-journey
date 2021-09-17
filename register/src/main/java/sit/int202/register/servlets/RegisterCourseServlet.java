@@ -21,7 +21,7 @@ public class RegisterCourseServlet extends HttpServlet {
         Map<String, String[]> parameterMap = request.getParameterMap();
         int semester = Integer.parseInt(parameterMap.get("semester")[0]);
         HttpSession session = request.getSession();
-        CourseRegistered courseRegistered = (CourseRegistered) session.getAttribute("registeredCourse");
+        CourseRegistered courseRegistered = (CourseRegistered) session.getAttribute("courseRegistered");
         if (courseRegistered == null) {
             courseRegistered = new CourseRegistered();
             session.setAttribute("courseRegistered", courseRegistered);
@@ -30,7 +30,8 @@ public class RegisterCourseServlet extends HttpServlet {
         }
         for (String subjectId : parameterMap.get("registeredSubjects")) {
             courseRegistered.registerSubject(semester, CourseRepository.getSubject(semester, subjectId));
-            System.out.println(CourseRepository.getSubject(semester, subjectId));
         }
+        request.setAttribute("courseRegisteredList", courseRegistered);
+        getServletContext().getRequestDispatcher("/submit_stage.jsp").forward(request, response);
     }
 }

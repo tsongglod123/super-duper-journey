@@ -20,7 +20,6 @@ public class CourseListServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Map<String, String[]> parameterMap = request.getParameterMap();
-        request.setCharacterEncoding("UTF-8");
         if (parameterMap.get("semester") == null) {
             doGet(request, response);
             return;

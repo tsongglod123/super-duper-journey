@@ -9,5 +9,7 @@
     <body>
         <h2>Menu</h2>
         <a href="course-list">1.) Register</a>
+        <br>
+        <a href="register-history">2.) History</a>
     </body>
 </html>
