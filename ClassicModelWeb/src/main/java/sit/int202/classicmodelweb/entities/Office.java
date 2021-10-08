@@ -1,30 +1,47 @@
 package sit.int202.classicmodelweb.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
-@Entity
-@Table(name = "offices")
+import java.util.List;
+
 @Getter
 @Setter
+@Table(name = "offices")
+@Entity
+@ToString
 public class Office {
     @Id
-    private String officeCode;
+    @Column(name = "officeCode", nullable = false, length = 10)
+    private String id;
+
+    @Column(name = "city", nullable = false, length = 50)
     private String city;
-    private String postalCode;
+
+    @Column(name = "phone", nullable = false, length = 50)
+    private String phone;
+
+    @Column(name = "addressLine1", nullable = false, length = 50)
+    private String addressLine1;
+
+    @Column(name = "addressLine2", length = 50)
+    private String addressLine2;
+
+    @Column(name = "state", length = 50)
+    private String state;
+
+    @Column(name = "country", nullable = false, length = 50)
     private String country;
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder("Office {");
-        sb.append("officeCode = '").append(officeCode).append('\'');
-        sb.append(", city = '").append(city).append('\'');
-        sb.append(", postalCode = '").append(postalCode).append('\'');
-        sb.append(", country = '").append(country).append('\'');
-        sb.append('}');
-        return sb.toString();
-    }
+    @Column(name = "postalCode", nullable = false, length = 15)
+    private String postalCode;
+
+    @Column(name = "territory", nullable = false, length = 10)
+    private String territory;
+
+    @OneToMany(mappedBy = "officeCode", fetch = FetchType.LAZY)
+    @ToString.Exclude
+    private List<Employee> employeeList;
 }
