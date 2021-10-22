@@ -7,7 +7,7 @@
 </head>
 <body>
 <div class="container m-auto bg-light w-75">
-    <div class="row w-100 h2">Coures Register History ::</div>
+    <div class="row w-100 h2">Course Register History ::</div>
     <c:forEach items="${sessionScope.courseRegistered.history}" var="entry">
     <div class="row">Semester: ${entry.key}</div>
     <c:forEach items="${entry.value}" var="subject" varStatus="vs">

@@ -9,6 +9,12 @@ import java.util.List;
 
 @Getter
 @Setter
+
+@NamedQueries({
+        @NamedQuery(name = "Office.findAll", query = "select o from Office o"),
+        @NamedQuery(name = "Office.findByCountry", query = "select o from Office o where o.country like :countryName")
+})
+
 @Table(name = "offices")
 @Entity
 @ToString

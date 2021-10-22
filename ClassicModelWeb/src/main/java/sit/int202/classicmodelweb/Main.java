@@ -4,11 +4,15 @@ import sit.int202.classicmodelweb.entities.Employee;
 import sit.int202.classicmodelweb.entities.Office;
 import sit.int202.classicmodelweb.repositories.EmpRepo;
 import sit.int202.classicmodelweb.repositories.OfficeRepo;
+import sit.int202.classicmodelweb.repositories.ProductRepo;
 
 public class Main {
     public static void main(String[] args) {
-        OfficeRepo officeRepo = new OfficeRepo();
-        EmpRepo empRepo = new EmpRepo();
+//        OfficeRepo officeRepo = new OfficeRepo();
+//        EmpRepo empRepo = new EmpRepo();
+        ProductRepo productRepo = new ProductRepo();
+        System.out.println(productRepo.findAll(1, 5));
+        System.out.println(productRepo.countAll());
 
 //        Office newOff = new Office();
 //        newOff.setId("8");
@@ -20,14 +24,18 @@ public class Main {
 //        newOff.setPostalCode("420420");
 //        officeRepo.save(newOff);
 
-        for (Office office : officeRepo.findAll()) {
-            System.out.println(office.getId() + ": " + office.getCity());
-            office.getEmployeeList().forEach(Main::printEmp);
-        }
-        System.out.println();
+//        Office oldOffice =  officeRepo.find("8");
+//        oldOffice.setPostalCode("123456");
+//        officeRepo.update(oldOffice);
 
-        empRepo.findByDesc("M").forEach(Main::printEmp);
-        System.out.println(empRepo.find(1056));
+//        for (Office office : officeRepo.findAll()) {
+//            System.out.println(office.getId() + ": " + office.getCity());
+//            office.getEmployeeList().forEach(Main::printEmp);
+//        }
+//        System.out.println();
+
+//        empRepo.findByDesc("M").forEach(Main::printEmp);
+//        System.out.println(empRepo.find(1056));
     }
 
     private static void printEmp(Employee e) {
