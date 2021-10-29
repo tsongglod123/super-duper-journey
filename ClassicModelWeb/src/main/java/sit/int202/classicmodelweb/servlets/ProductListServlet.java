@@ -26,6 +26,9 @@ public class ProductListServlet extends HttpServlet {
         request.setAttribute("page", page);
         request.setAttribute("pageSize", pageSize);
         request.setAttribute("totalPage", totalPage);
+        Cookie ck = new Cookie("lastpage", "product-list");
+        ck.setMaxAge(7 * 24 * 60 * 60);
+        response.addCookie(ck);
         getServletContext().getRequestDispatcher("/ProductList.jsp").forward(request, response);
     }
 

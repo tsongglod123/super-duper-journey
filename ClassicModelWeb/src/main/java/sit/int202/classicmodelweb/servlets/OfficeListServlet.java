@@ -17,6 +17,9 @@ public class OfficeListServlet extends HttpServlet {
         if (id != null) {
             request.setAttribute("selectedOffice", officeRepo.find(id));
         }
+        Cookie ck = new Cookie("lastpage", "office-list");
+        ck.setMaxAge(7 * 24 * 60 * 60);
+        response.addCookie(ck);
         getServletContext().getRequestDispatcher("/OfficeList.jsp").forward(request, response);
     }
 

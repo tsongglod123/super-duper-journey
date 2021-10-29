@@ -21,7 +21,7 @@
 </div>
 <div class="row">
     <c:forEach items="${requestScope.selectedOffice.employeeList}" var="employee">
-        <div class="col-2 pl-2 m-2 border border-secondary rounded-pill">
+        <div class="col-2 pl-2 m-2 border border-secondary">
             <div> ${employee.firstName} ${employee.lastName} - ${employee.jobTitle}</div>
         </div>
     </c:forEach>

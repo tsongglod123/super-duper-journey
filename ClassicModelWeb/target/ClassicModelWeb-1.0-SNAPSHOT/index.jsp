@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -20,6 +21,15 @@
         }
     </style>
     <script>
+        function loadHomepage() {
+            const xhttp = new XMLHttpRequest();
+            xhttp.onload = function () {
+                document.getElementById("body-content").innerHTML = this.responseText;
+            }
+            xhttp.open("GET", "homepage");
+            xhttp.send();
+        }
+
         function loadOffice(officeCode) {
             const xhttp = new XMLHttpRequest();
             xhttp.onload = function () {
@@ -41,9 +51,9 @@
     </script>
 </head>
 <body>
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark" id="navbar">
     <div class="container-fluid">
-        <a class="navbar-brand text-warning" href="javascript:void(0)">Classic Model</a>
+        <a class="navbar-brand text-warning" href="javascript:loadHomepage()">Classic Model</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -72,9 +82,10 @@
     </div>
 </nav>
 <div class="container" id="body-content">
-    <h3>SIT-202: Classic Model Online</h3>
-    <p>SIT-202 is a global online marketplace. <br>
-    <p>SIT-202 is a young and dynamic company specialized in the online sale of static collectible models and related
+    <h2 id="title">SIT-202: Classic Model Online</h2>
+    <h4 id="sub-title">SIT-202 is a global online marketplace.</h4>
+    <p id="details">SIT-202 is a young and dynamic company specialized in the online sale of static collectible models
+        and related
         accessories.
         Our location are distributed around the world. <br>
         Welcome to the world of classic cars and antique cars! On our marketplace, we offer a huge assortment of Classic
@@ -97,5 +108,16 @@
         every automobile fan.
     </p>
 </div>
+<c:if test="${cookie.lastpage != null}">
+    <script>
+        window.onload = (ev) => {
+            ${
+            cookie.lastpage.value == "homepage" ?
+            "loadHomepage()" : cookie.lastpage.value == "office-list" ?
+            "loadOffice()" : "loadProduct(1, 15)"
+            }
+        };
+    </script>
+</c:if>
 </body>
 </html>
