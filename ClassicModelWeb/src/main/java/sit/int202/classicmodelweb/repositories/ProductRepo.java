@@ -34,4 +34,15 @@ public class ProductRepo {
         em.close();
         return number;
     }
+
+    public Product find(String productCode) {
+        EntityManager em = getEntityManager();
+        Product product = em.find(Product.class, productCode);
+        em.close();
+        return product;
+    }
+
+    public Product findProduct(String productCode) {
+        return find(productCode);
+    }
 }

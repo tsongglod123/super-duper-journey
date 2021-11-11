@@ -24,6 +24,10 @@ public class Cart<K, V extends CartItem> {
         return Collections.unmodifiableCollection(map.values());
     }
 
+    public double getTotalPrice() {
+        return map.values().stream().mapToDouble(CartItem::getTotal).sum();
+    }
+
     public void addItem(K key, V value) {
         V item = map.get(key);
         if (item == null) {
