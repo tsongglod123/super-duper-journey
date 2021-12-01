@@ -4,7 +4,7 @@
              xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
              version="3.0">
     <persistence-unit name="classic-model">
-<!--        <persistence-unit name="classic-model" transaction-type="JTA">-->
+<!--    <persistence-unit name="classic-model" transaction-type="JTA">-->
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 <!--        <jta-data-source>jdbc/classicmodel</jta-data-source>-->
         <class>sit.int202.classicmodelweb.entities.Employee</class>

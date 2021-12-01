@@ -15,6 +15,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
+<jsp:include page="./WEB-INF/jsp/login-form.html"/>
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark" id="navbar">
     <div class="container-fluid">
         <a class="navbar-brand text-warning" href="javascript:loadHomepage()">Classic Model</a>
@@ -33,7 +34,8 @@
                     <a class="nav-link" href="javascript:void(0)">Order History</a>
                 </li>
                 <li class="nav-item ml-4">
-                    <a class="nav-link text-light" href="#"><i class="bi bi-box-arrow-in-right"></i>Login</a>
+                    <a id="login-menu" class="nav-link text-light" href="javascript:showLoginForm()">
+                        <i class="bi bi-box-arrow-in-right"></i>Login</a>
                 </li>
             </ul>
             <div style="margin-right: 20px">

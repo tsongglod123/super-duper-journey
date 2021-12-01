@@ -1,18 +1,31 @@
 package sit.int202.classicmodelweb;
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
+import sit.int202.classicmodelweb.entities.Customer;
 import sit.int202.classicmodelweb.entities.Employee;
 import sit.int202.classicmodelweb.entities.Office;
+import sit.int202.classicmodelweb.repositories.CustomerRepo;
 import sit.int202.classicmodelweb.repositories.EmpRepo;
 import sit.int202.classicmodelweb.repositories.OfficeRepo;
 import sit.int202.classicmodelweb.repositories.ProductRepo;
 
 public class Main {
     public static void main(String[] args) {
+        String password = "test";
+
+        CustomerRepo cr = new CustomerRepo();
+        Customer customer = cr.findByName("Young Mary");
+        System.out.println(customer);
+
+        BCrypt.Result result = BCrypt.verifyer().verify(password.toCharArray(), customer.getPassword());
+        System.out.println(result.toString());
+        System.out.println(result.validFormat);
+        System.out.println(result.verified);
 //        OfficeRepo officeRepo = new OfficeRepo();
 //        EmpRepo empRepo = new EmpRepo();
-        ProductRepo productRepo = new ProductRepo();
-        System.out.println(productRepo.findAll(1, 5));
-        System.out.println(productRepo.countAll());
+//        ProductRepo productRepo = new ProductRepo();
+//        System.out.println(productRepo.findAll(1, 5));
+//        System.out.println(productRepo.countAll());
 
 //        Office newOff = new Office();
 //        newOff.setId("8");
