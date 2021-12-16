@@ -59,4 +59,7 @@ public class Customer {
 
     @Column(name = "password", length = 256)
     private String password;
+
+    @Column(name = "role", length = 20)
+    private String role;
 }

@@ -11,6 +11,12 @@ public class CustomerRepo {
         return EntityManagerService.getEntityManager();
     }
 
+    public List<Customer> findAll() {
+        EntityManager em = getEntityManager();
+        Query query = em.createQuery("select c from Customer c");
+        return query.getResultList();
+    }
+
     public Customer findByName(String name) {
         EntityManager em = getEntityManager();
         Query query = em.createNamedQuery("Customer.findUser");

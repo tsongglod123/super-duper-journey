@@ -16,6 +16,10 @@ public class Cart<K, V extends CartItem> {
         return map.size();
     }
 
+    public ClassicModelCartItem getProduct(K key) {
+        return (ClassicModelCartItem) map.get(key);
+    }
+
     public int countQuantity() {
         return map.values().stream().mapToInt(CartItem::getQuantity).sum();
     }
@@ -37,8 +41,15 @@ public class Cart<K, V extends CartItem> {
         }
     }
 
-    public V removeItem(K key) {
-        return map.remove(key);
+    public void decreaseItem(K key) {
+        V item = map.get(key);
+        if (item.getQuantity() > 1) {
+            item.setQuantity(item.getQuantity() - 1);
+        }
+    }
+
+    public void removeItem(K key) {
+        map.remove(key);
     }
 
     public void clear() {

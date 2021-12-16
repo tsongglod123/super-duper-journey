@@ -8,6 +8,7 @@ import sit.int202.classicmodelweb.entities.Customer;
 import sit.int202.classicmodelweb.repositories.CustomerRepo;
 
 import java.io.IOException;
+import java.util.Objects;
 
 @WebServlet(name = "AuthenServlet", value = "/login")
 public class AuthenServlet extends HttpServlet {
@@ -33,7 +34,13 @@ public class AuthenServlet extends HttpServlet {
             if (!result.verified || !result.validFormat) {
                 response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
             } else {
-                request.getSession().setAttribute("user", customer);
+                if (Objects.equals(customer.getRole(), "user")) {
+                    request.getSession().setAttribute("user", customer);
+                } else if (Objects.equals(customer.getRole(), "admin")) {
+                    request.getSession().setAttribute("admin", customer);
+                } else {
+                    request.getSession().setAttribute("guest", customer);
+                }
             }
         }
     }

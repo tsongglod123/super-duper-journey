@@ -44,16 +44,74 @@ function addToCart(productCode) {
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function () {
         let cartInfo = document.getElementById("noOfItemInCart");
-        let noOfItem = xhttp.responseText;
-        // alert("Response = "+ noOfItem);
-        if (noOfItem > 0) {
+        if (xhttp.responseText > 0) {
             cartInfo.style.display = "inline";
         } else {
             cartInfo.style.display = "none";
         }
-        cartInfo.innerHTML = noOfItem;
+        cartInfo.innerHTML = xhttp.responseText;
     }
     xhttp.open("GET", "add-to-cart?productCode=" + productCode);
+    xhttp.send();
+}
+
+function increase(productCode) {
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function () {
+        let cartInfo = document.getElementById("noOfItemInCart");
+        cartInfo.innerHTML = xhttp.responseText;
+        if (xhttp.responseText > 0) {
+            cartInfo.style.display = "inline";
+        } else {
+            cartInfo.style.display = "none";
+        }
+        viewCart();
+    }
+    xhttp.open("GET", "add-qty?productCode=" + productCode);
+    xhttp.send();
+}
+
+function decrease(productCode) {
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function () {
+        let cartInfo = document.getElementById("noOfItemInCart");
+        cartInfo.innerHTML = xhttp.responseText;
+        if (xhttp.responseText > 0) {
+            cartInfo.style.display = "inline";
+        } else {
+            cartInfo.style.display = "none";
+        }
+        viewCart();
+    }
+    xhttp.open("GET", "decrease-qty?productCode=" + productCode);
+    xhttp.send();
+}
+
+function clearAll() {
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function () {
+        let cartInfo = document.getElementById("noOfItemInCart");
+        cartInfo.style.display = "none";
+        cartInfo.innerHTML = xhttp.responseText;
+        viewCart();
+    }
+    xhttp.open("GET", "clear-all");
+    xhttp.send();
+}
+
+function removeItemFromCart(productCode) {
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function () {
+        let cartInfo = document.getElementById("noOfItemInCart");
+        cartInfo.innerHTML = xhttp.responseText;
+        if (xhttp.responseText > 0) {
+            cartInfo.style.display = "inline";
+        } else {
+            cartInfo.style.display = "none";
+        }
+        viewCart();
+    }
+    xhttp.open("GET", "remove-item?productCode=" + productCode);
     xhttp.send();
 }
 

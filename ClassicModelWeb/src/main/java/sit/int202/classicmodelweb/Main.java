@@ -21,6 +21,10 @@ public class Main {
         System.out.println(result.toString());
         System.out.println(result.validFormat);
         System.out.println(result.verified);
+
+        for (Customer cus : cr.findAll()) {
+            System.out.println(cus);
+        }
 //        OfficeRepo officeRepo = new OfficeRepo();
 //        EmpRepo empRepo = new EmpRepo();
 //        ProductRepo productRepo = new ProductRepo();
