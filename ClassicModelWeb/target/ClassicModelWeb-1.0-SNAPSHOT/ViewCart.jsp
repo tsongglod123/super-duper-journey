@@ -21,7 +21,7 @@
             <c:forEach items="${sessionScope.cart.allItems}" var="lineItem" varStatus="vs">
                 <tr>
                     <td>${vs.count}</td>
-                    <td>${lineItem.product.id}</td>
+                    <td class="product-id">${lineItem.product.id}</td>
                     <td>${lineItem.product.productName}</td>
                     <td style="text-align: center; font-family: 'Courier New', monospace;">
                         <button type="button" id="decrease-btn" class="ui-button"

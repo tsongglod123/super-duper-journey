@@ -159,3 +159,7 @@ function logout() {
     xhttp.open("GET", "logout");
     xhttp.send();
 }
+
+function updateCart(qty, unitPrice, id) {
+
+}

@@ -13,7 +13,7 @@ public class HomepageServlet extends HttpServlet {
         Cookie ck = new Cookie("lastpage", "homepage");
         ck.setMaxAge(7 * 24 * 60 * 60);
         response.addCookie(ck);
-        getServletContext().getRequestDispatcher("/contents.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/HomepageContent.jsp").forward(request, response);
     }
 
     @Override
