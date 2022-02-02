@@ -1,42 +1,18 @@
 package sit.int204.lab01.beans;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Car {
     private String chasisNumber;
     private String brand;
     private Engine engine;
-
-    public Car() {
-    }
-
-    public Car(String chasisNumber, String brand, Engine engine) {
-        this.chasisNumber = chasisNumber;
-        this.brand = brand;
-        this.engine = engine;
-    }
-
-    public String getChasisNumber() {
-        return chasisNumber;
-    }
-
-    public String getBrand() {
-        return brand;
-    }
-
-    public Engine getEngine() {
-        return engine;
-    }
-
-    public void setChasisNumber(String chasisNumber) {
-        this.chasisNumber = chasisNumber;
-    }
-
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
-
-    public void setEngine(Engine engine) {
-        this.engine = engine;
-    }
 
     public void start() {
         engine.turnOn();

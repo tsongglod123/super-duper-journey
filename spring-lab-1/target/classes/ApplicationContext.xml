@@ -2,21 +2,61 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <bean id="car" class="sit.int204.lab01.beans.Car">
-        <constructor-arg name="chasisNumber" value="ZE3197-9485M"/>
-        <constructor-arg name="brand" value="Toyota"/>
-        <constructor-arg name="engine" ref="2ZZ-GE"/>
+    <!--    <bean id="car" class="sit.int204.lab01.beans.Car">-->
+    <!--        <constructor-arg name="chasisNumber" value="ZE3197-9485M"/>-->
+    <!--        <constructor-arg name="brand" value="Toyota"/>-->
+    <!--        <constructor-arg name="engine" ref="2ZZ-GE"/>-->
+    <!--    </bean>-->
+    <!--    <bean id="carX" class="sit.int204.lab01.beans.Car">-->
+    <!--        <property name="chasisNumber" value="K123445ZR"/>-->
+    <!--        <property name="brand" value="Benz D500"/>-->
+    <!--        <property name="engine" ref="1KD-FTV"/>-->
+    <!--    </bean>-->
+    <!--    <bean id="carN" class="sit.int204.lab01.beans.Car" autowire="byName">-->
+    <!--        <property name="chasisNumber" value="BY-NAME1234"/>-->
+    <!--        <property name="brand" value="Benz D520D"/>-->
+    <!--    </bean>-->
+    <!--    <bean id="carT" class="sit.int204.lab01.beans.Car" autowire="byType">-->
+    <!--        <property name="chasisNumber" value="BY-TYPE1234"/>-->
+    <!--        <property name="brand" value="BMW X7"/>-->
+    <!--    </bean>-->
+
+    <bean id="2KP" class="sit.int204.lab01.beans.GasolineEngine">
+        <property name="capacity" value="4000"/>
     </bean>
-    <bean id="carX" class="sit.int204.lab01.beans.Car">
-        <property name="chasisNumber" value="K123445ZR"/>
-        <property name="brand" value="Benz D500"/>
-        <property name="engine" ref="1KD-FTV"/>
+    <bean id="brand" class="java.lang.String">
+        <constructor-arg value="Honda CRV"/>
     </bean>
-    <bean id="2ZZ-GE" class="sit.int204.lab01.beans.GasolineEngine">
-        <constructor-arg name="capacity" value="2498" type="int"/>
+    <bean id="chasisNumber" class="java.lang.String">
+        <constructor-arg value="BY-CONST-1234"/>
     </bean>
-    <bean id="1KD-FTV" class="sit.int204.lab01.beans.DieselEngine">
-        <constructor-arg name="capacity" value="2982" type="int"/>
+    <bean id="carZ" class="sit.int204.lab01.beans.Car" autowire="constructor"/>
+
+    <bean id="counterA" class="sit.int204.lab01.beans.Counter" factory-method="getInstance"/>
+    <bean id="counterB" class="sit.int204.lab01.beans.Counter" factory-method="getInstance"/>
+
+    <bean id="geometricShapeFactory" class="sit.int204.lab01.beans.GeometricShapeFactory"/>
+    <bean id="circle" factory-bean="geometricShapeFactory" class="sit.int204.lab01.beans.Circle">
+        <property name="radius" value="2.0"/>
     </bean>
+    <bean id="rectangle" factory-bean="geometricShapeFactory" class="sit.int204.lab01.beans.Rectangle">
+        <property name="height" value="10.25"/>
+        <property name="width" value="2.7"/>
+    </bean>
+    <bean id="c" class="sit.int204.lab01.beans.GeometricShapeFactory" factory-method="getCircle"/>
+    <bean id="r" class="sit.int204.lab01.beans.GeometricShapeFactory" factory-method="getRectangle"/>
+
+    <!--    <bean id="oneKd" class="sit.int204.lab01.beans.DieselEngine">-->
+    <!--        <constructor-arg name="capacity" value="2982" type="int"/>-->
+    <!--    </bean>-->
+    <!--    <bean id="engine" class="sit.int204.lab01.beans.GasolineEngine">-->
+    <!--        <constructor-arg name="capacity" value="1111" type="int"/>-->
+    <!--    </bean>-->
+    <!--    <bean id="2ZZ-GE" class="sit.int204.lab01.beans.GasolineEngine">-->
+    <!--        <constructor-arg name="capacity" value="2498" type="int"/>-->
+    <!--    </bean>-->
+    <!--    <bean id="1KD-FTV" class="sit.int204.lab01.beans.DieselEngine">-->
+    <!--        <constructor-arg name="capacity" value="2982" type="int"/>-->
+    <!--    </bean>-->
 </beans>
 

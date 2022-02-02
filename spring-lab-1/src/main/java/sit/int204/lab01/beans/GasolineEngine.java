@@ -24,4 +24,8 @@ public class GasolineEngine implements Engine {
     public void turnOff() {
         System.out.println("Turn off - Gasoline Engine");
     }
+
+    public void setCapacity(String capacity) {
+        this.capacity = Integer.parseInt(capacity);
+    }
 }
