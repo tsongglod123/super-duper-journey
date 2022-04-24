@@ -1,6 +1,7 @@
 package sit.int204.classicmodelsservice.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 import sit.int204.classicmodelsservice.dto.EmployeeDTO;
 import sit.int204.classicmodelsservice.entities.Employee;
