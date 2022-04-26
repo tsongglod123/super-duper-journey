@@ -7,6 +7,7 @@ import javax.persistence.*;
 import java.time.Instant;
 
 @Getter
+
 @Setter
 @Entity
 @Table(name = "event_booking")

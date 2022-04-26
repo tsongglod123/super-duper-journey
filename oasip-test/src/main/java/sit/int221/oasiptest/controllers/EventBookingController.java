@@ -2,8 +2,8 @@ package sit.int221.oasiptest.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import sit.int221.oasiptest.dto.EventBookingCategoryDto;
-import sit.int221.oasiptest.entities.EventBooking;
+import sit.int221.oasiptest.dto.api.EventDetailsBaseDto;
+import sit.int221.oasiptest.dto.api.EventListAllDto;
 import sit.int221.oasiptest.services.EventBookingService;
 
 import java.util.List;
@@ -18,18 +18,13 @@ public class EventBookingController {
         this.service = service;
     }
 
-    @PostMapping("")
-    public EventBooking create(@RequestBody EventBookingCategoryDto newBooking) {
-        return service.save(newBooking);
-    }
-
     @GetMapping("")
-    public List<EventBookingCategoryDto> getEventBookings() {
-        return service.getEventBookings();
+    public List<EventListAllDto> getEventListSorted() {
+        return service.getEventListSorted();
     }
 
     @GetMapping("/{id}")
-    public EventBookingCategoryDto getEventBookingById(@PathVariable Integer id) {
-        return service.getEventBookingById(id);
+    public EventDetailsBaseDto getEventDetails(@PathVariable Integer id) {
+        return service.getEventDetails(id);
     }
 }

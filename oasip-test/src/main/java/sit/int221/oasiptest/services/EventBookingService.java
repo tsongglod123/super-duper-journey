@@ -2,10 +2,12 @@ package sit.int221.oasiptest.services;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-import sit.int221.oasiptest.dto.EventBookingCategoryDto;
+import sit.int221.oasiptest.dto.api.EventDetailsBaseDto;
+import sit.int221.oasiptest.dto.api.EventListAllDto;
 import sit.int221.oasiptest.entities.EventBooking;
 import sit.int221.oasiptest.repo.EventBookingRepository;
 import sit.int221.oasiptest.utils.ListMapper;
@@ -25,18 +27,14 @@ public class EventBookingService {
         this.listMapper = listMapper;
     }
 
-    public List<EventBookingCategoryDto> getEventBookings() {
-        List<EventBooking> list = repo.findAll();
-        return listMapper.mapList(list, EventBookingCategoryDto.class, modelMapper);
+    public List<EventListAllDto> getEventListSorted() {
+        Sort sort = Sort.by("eventStartTime");
+        List<EventBooking> bookings = repo.findAll(sort.descending());
+        return listMapper.mapList(bookings, EventListAllDto.class, modelMapper);
     }
 
-    public EventBookingCategoryDto getEventBookingById(Integer id) {
+    public EventDetailsBaseDto getEventDetails(Integer id) {
         EventBooking booking = repo.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-        return modelMapper.map(booking, EventBookingCategoryDto.class);
-    }
-
-    public EventBooking save(EventBookingCategoryDto newBooking) {
-        EventBooking booking = modelMapper.map(newBooking, EventBooking.class);
-        return repo.saveAndFlush(booking);
+        return modelMapper.map(booking, EventDetailsBaseDto.class);
     }
 }
