@@ -9,7 +9,7 @@ import sit.int221.oasiptest.services.EventBookingService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/bookings")
+@RequestMapping("/api/events")
 public class EventBookingController {
     private final EventBookingService service;
 
